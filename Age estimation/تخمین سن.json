@@ -1,0 +1,301 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "responseMode": "responseNodes"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -256,
+        -48
+      ],
+      "id": "578a7b0b-fa8d-4975-8f6b-227e4d043947",
+      "name": "When chat message received",
+      "webhookId": "980e6582-bbb5-4d1a-8cce-34a1c02171f9"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.chatInput.toNumber() }}",
+                    "rightValue": 8,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    },
+                    "id": "9aff63cf-9c03-4b76-8f5f-e1dda1df0ee9"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "less than 8"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f43ba3ab-549a-4ce0-9823-6633a3822a74",
+                    "leftValue": "={{ $json.chatInput.toNumber() }}",
+                    "rightValue": 16,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "less than 16"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "71fc14f0-b655-4363-9894-33540d42249a",
+                    "leftValue": "={{ $json.chatInput.toNumber() }}",
+                    "rightValue": 40,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "less than 40"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "4b1d205b-fc60-4e7e-bd80-fc8c79be5262",
+                    "leftValue": "={{ $json.chatInput.toNumber() }}",
+                    "rightValue": 60,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "less than 60"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3d3beca9-e5c1-4bab-a1c5-a96fb8b2d45e",
+                    "leftValue": "={{ $json.chatInput.toNumber() }}",
+                    "rightValue": 60,
+                    "operator": {
+                      "type": "number",
+                      "operation": "gte"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "greater or equal "
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        -16,
+        -96
+      ],
+      "id": "8bd07694-559f-4f22-942e-d35fbbf27797",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "message": "خردسال ",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        448,
+        -224
+      ],
+      "id": "11ad19fa-493e-41f1-84ad-f8154c888d8a",
+      "name": "Respond to Chat"
+    },
+    {
+      "parameters": {
+        "message": "نوجوان",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        704,
+        -128
+      ],
+      "id": "60866069-430e-4d2f-bf47-63decff6e16a",
+      "name": "Respond to Chat1"
+    },
+    {
+      "parameters": {
+        "message": "جوان",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        448,
+        -48
+      ],
+      "id": "efd6300a-b7aa-4fa0-89cb-19a0b1f424f1",
+      "name": "Respond to Chat2"
+    },
+    {
+      "parameters": {
+        "message": "میانسال",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        704,
+        64
+      ],
+      "id": "49002267-198a-4212-bf35-57b7a271e735",
+      "name": "Respond to Chat3"
+    },
+    {
+      "parameters": {
+        "message": "کهنسال",
+        "waitUserReply": false,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chat",
+      "typeVersion": 1,
+      "position": [
+        448,
+        160
+      ],
+      "id": "3d861e95-8ce9-45bf-86eb-f7cf10fa3ca7",
+      "name": "Respond to Chat4"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Respond to Chat",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Chat1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Chat2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Chat3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Respond to Chat4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respond to Chat": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "d003f107-f49a-441a-9836-d51df4313bd1",
+  "meta": {
+    "instanceId": "66fafc99aa330aa5bcd3d4cf05343e5d4ffeff121dd549df316ec37f2c562b21"
+  },
+  "id": "lAUjl4i5UBRPf4Go",
+  "tags": []
+}
