@@ -1,0 +1,269 @@
+{
+  "name": "My workflow 3",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "فرم اطلاعات",
+        "formDescription": "دریافت اطلاعات ثبتنام جهت دوره پیشرفته هوش مصنوعی",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "نام ",
+              "placeholder": "مهدی",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "نام خانوادگی",
+              "placeholder": "احمدی",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "شماره تماس",
+              "fieldType": "number",
+              "placeholder": "09181234567",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "نشانی الکترونیکی ",
+              "fieldType": "email",
+              "placeholder": "xxxx@gmail.com",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "آدرس محل زندگی",
+              "fieldType": "textarea",
+              "placeholder": "تهران-شهر ری",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "تحصیلات",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "دیپلم"
+                  },
+                  {
+                    "option": "لیسانس"
+                  },
+                  {
+                    "option": "فوق لیسانس"
+                  },
+                  {
+                    "option": "دکتری و بالاتر"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "علاقه مندی ها ",
+              "fieldType": "checkbox",
+              "defaultValue": "ورزش",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "ورزش"
+                  },
+                  {
+                    "option": "موسیقی"
+                  },
+                  {
+                    "option": "فیلم "
+                  },
+                  {
+                    "option": "گردش"
+                  },
+                  {
+                    "option": "کتابخوانی"
+                  },
+                  {
+                    "option": "آشپزی"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        -480,
+        0
+      ],
+      "id": "3e679a49-5895-4610-ae64-5d73902cf3c5",
+      "name": "On form submission",
+      "webhookId": "464ed6f2-2f75-4f8f-b172-18ef170faae6"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "-",
+          "mode": "list",
+          "cachedResultName": "اطلاعات",
+          "cachedResultUrl": "-"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "-"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "نام": "={{ $json['نام '] }}",
+            "نام خانوادگی": "={{ $json['نام خانوادگی'] }}",
+            "ادرس ایمیل ": "={{ $json['نشانی الکترونیکی '] }}",
+            "تحصیلات": "={{ $json['تحصیلات'] }}",
+            "ادرس": "={{ $json['آدرس محل زندگی'] }}",
+            "سرگرمی": "={{ $json['علاقه مندی ها '] }}",
+            "شماره تماس": "={{ $json['شماره تماس'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "نام",
+              "displayName": "نام",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "نام خانوادگی",
+              "displayName": "نام خانوادگی",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "تحصیلات",
+              "displayName": "تحصیلات",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "شماره تماس",
+              "displayName": "شماره تماس",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "سرگرمی",
+              "displayName": "سرگرمی",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ادرس ایمیل ",
+              "displayName": "ادرس ایمیل ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "ادرس",
+              "displayName": "ادرس",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -224,
+        0
+      ],
+      "id": "604befa1-fc18-460e-b608-8d5f9e205757",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "2V8rZCjjhiWbVa0P",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "On form submission": [
+      {
+        "json": {
+          "نام ": "سینا",
+          "نام خانوادگی": "افشاری",
+          "شماره تماس": 9186796473,
+          "نشانی الکترونیکی ": "afshari@gmail.com",
+          "آدرس محل زندگی": "همدان",
+          "تحصیلات": "لیسانس",
+          "علاقه مندی ها ": [
+            "ورزش",
+            "موسیقی",
+            "فیلم",
+            "گردش",
+            "کتابخوانی",
+            "آشپزی"
+          ],
+          "submittedAt": "2026-01-01T01:14:08.379+03:30",
+          "formMode": "test"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "75455f1c-44f8-43c3-95c7-6b0249e8c05b",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "66fafc99aa330aa5bcd3d4cf05343e5d4ffeff121dd549df316ec37f2c562b21"
+  },
+  "id": "RrghudRetaYOujPi",
+  "tags": []
+}
